@@ -1,0 +1,19 @@
+--
+-- File generated with SQLiteStudio v3.3.3 on „т но€ 3 19:18:48 2022
+--
+-- Text encoding used: System
+--
+PRAGMA foreign_keys = off;
+BEGIN TRANSACTION;
+
+-- Table: test
+CREATE TABLE test (years INTEGER, month STRING, date INTEGER, спрос STRING);
+INSERT INTO test (years, month, date, спрос) VALUES (2018, '‘евраль', 7, 28288);
+INSERT INTO test (years, month, date, спрос) VALUES (2018, 'ћарт', 4, 2882);
+INSERT INTO test (years, month, date, спрос) VALUES (2018, 'январь', 1, 72322);
+INSERT INTO test (years, month, date, спрос) VALUES (2018, 'январь', 2, 72819);
+INSERT INTO test (years, month, date, спрос) VALUES (2018, 'январь', 3, 99290);
+INSERT INTO test (years, month, date, спрос) VALUES (2018, '‘евраль', 2, 72821);
+
+COMMIT TRANSACTION;
+PRAGMA foreign_keys = on;
