@@ -21,7 +21,7 @@ class MplCanvas(FigureCanvasQTAgg):
 class DBSample(QMainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        uic.loadUi('qt_proj4.ui', self)
+        uic.loadUi('untitled-5.ui', self)
         self.params = {'Сортировка по году': 'year',
                        'Сортировка по месяцу': 'month'}
         self.con = sqlite3.connect(self.input.text())
@@ -55,7 +55,6 @@ class DBSample(QMainWindow):
                     res_x = []
                     res_y = []
                     self.verticalLayout.addWidget(sc)
-
                     x = cur.execute(f"""SELECT спрос FROM test""").fetchall()
                     for i in x:
                         res_x.append(i[0])
@@ -86,11 +85,13 @@ class DBSample(QMainWindow):
                         sc.axes.plot(res_x, res_y)
                         self.show()
                     if self.para_poisk.text() in self.months:
+                        print(self.para_poisk.text())
                         sc = MplCanvas(self, width=3, height=3, dpi=65)
                         res_x = []
                         res_y = []
                         self.verticalLayout.addWidget(sc)
-                        s = f"""SELECT cпрос FROM test WHERE month = '{self.para_poisk.text()}'"""
+
+                        s = f"""SELECT спрос FROM test WHERE month = '{self.para_poisk.text()}'"""
                         x = cur.execute(s).fetchall()
                         for i in x:
                             res_x.append(i[0])
@@ -109,7 +110,7 @@ class DBSample(QMainWindow):
         except FileNotFoundError or sqlite3.OperationalError or sqlite3.DatabaseError:
             self.Error_1.setText('Файл не найден/Не верный формат базы данных')
 
-    def Do(self):  # нахождение максимума и минимама в базе данных
+    def Do(self):  # анализ базы данных
         try:
             if not self.input.text():
                 self.Error_2.setText('Вы не ввели имя файла')
